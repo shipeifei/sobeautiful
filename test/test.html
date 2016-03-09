@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="qunitjs/qunit/qunit.css">
+  <script type="text/javascript" src="qunitjs/qunit/qunit.js">
+  </script>
+  <script type="text/javascript" src="../dev/modules/data-type.js">
+  </script>
+</head>
+
+<body>
+  <script type="text/javascript">
+    module('util测试');
+    test('util测试', function() {
+      ok(true, type.isObject({}), 'is object');
+      ok(true, type.isFunction(function() {}), 'is function');
+      var div = document.createElement('div');
+      ok(true, type.isDocument(div), 'is isDocument');
+      ok(true, type.isWindow(window), 'is isWindow');
+
+
+      equal(type.isWindow(window), true, "is isWindow");
+      equal(type.isString(""),true," this is  a isString");
+      equal(type.isNumber(1),true," this is  a isNumber");
+      equal(type.isBoolean(true),true," this is  a isBoolean");
+      equal(type.isEmpty({}),true," this is  a isEmpty");
+      equal(type.isArray([]),true," this is  a isArray");
+
+
+    });
+  </script>
+  <h1 id="qunit-header">sobeautiful test</h1>
+  <h2 id="qunit-banner"></h2>
+  <ol id="qunit-tests"></ol>
+</body>
+
+</html>

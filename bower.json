@@ -1,0 +1,19 @@
+{
+  "name": "sobeautiful",
+  "version": "0.0.0",
+  "homepage": "https://github.com/youname/touch",
+  "authors": [
+    "shipeifei <shipeifei_gonghe@163.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
