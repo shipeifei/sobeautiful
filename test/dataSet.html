@@ -30,6 +30,13 @@
       });
       console.log("filters", filters);
 
+
+      //some
+      var some=dataSet.some([0,3,4,5,89,23],function (item,index) {
+
+         return item>3;
+      });
+      console.log("some", some);
       start();
     });
 
@@ -57,11 +64,7 @@
         c: '2'
       }).toString);
       equal(dataSet.isEqual('a', 'a'), true, "not ");
-
-
-
     });
-
     test("Test Method2", function() {
       ok(true, "Module1 Test2");
     });

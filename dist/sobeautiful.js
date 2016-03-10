@@ -186,7 +186,6 @@ var dataSet = {
         return +a === 0 ? 1 / +a === 1 / b : +a === +b;
       case '[object Date]':
       case '[object Boolean]':
-
         return +a === +b;
     }
 
@@ -240,9 +239,9 @@ var dataSet = {
 
   //循环
   /*
-  *callback:function(value,index,elements) 第一个是数组值，第二个是数组索引，第三个是数组本身this
-  *
-  */
+   *callback:function(value,index,elements) 第一个是数组值，第二个是数组索引，第三个是数组本身this
+   *
+   */
   each: function(elements, callback) {
     var i, key;
     if (dataType.likeArray(elements)) {
@@ -281,7 +280,7 @@ var dataSet = {
         return elements.map(callback);
       } else {
         for (i = 0; i < elements.length; i++) {
-          value = callback(elements[i], i,elements[i]);
+          value = callback(elements[i], i, elements[i]);
           if (!dataType.isNull(value)) {
             values.push(value);
           }
@@ -289,7 +288,7 @@ var dataSet = {
       }
     } else {
       for (key in elements) {
-        value = callback(elements[key], key,elements[key]);
+        value = callback(elements[key], key, elements[key]);
         if (!dataType.isNull(value)) {
           values.push(value);
         }
@@ -300,24 +299,37 @@ var dataSet = {
     }())
   },
   /*
-  *过滤方法
-  *callback:function(value,index,elements) 第一个是数组值，第二个是数组索引，第三个是数组本身this
-  *
-  */
+   *过滤方法
+   *callback:function(value,index,elements) 第一个是数组值，第二个是数组索引，第三个是数组本身this
+   *
+   */
   filter: function(elements, callback) {
     if (typeof Array.prototype.filter !== "function") {
       var arr = [];
       if (typeof callback === "function") {
         for (var k = 0, length = elements.length; k < length; k++) {
-          callback.call(elements[k], k,elements[k]) && arr.push(elements[k]);
+          callback.call(elements[k], k, elements[k]) && arr.push(elements[k]);
         }
       }
       return arr;
+    } else {
+      return elements.filter(callback);
+    }
+  },
+  some: function(elements, callback) {
+    if (typeof Array.prototype.some !== "function") {
+      var passed = false;
+      if (typeof callback === "function") {
+        for (var k = 0, length = elements.length; k < length; k++) {
+          if (passed === true) break;
+          passed = !!callback.call(elements[k], k, elements[k]);
+        }
+      }
+      return passed;
 
     }
     else {
-    return  elements.filter(callback);
+      return Array.prototype.some.call(elements,callback);
     }
-
   }
 };
