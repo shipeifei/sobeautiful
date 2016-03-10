@@ -59,36 +59,42 @@ var babel = require('gulp-babel');
 //
 // gulp.task('themes', themes.map(function(name){ return name + '-theme'; }));
 
-// Compile ES5 CommonJS entry point
-gulp.task('commonjs', function() {
-  gulp.src('./dev/sweetalert.es6.js')
-    .pipe(babel())
-    .pipe(rename('sweetalert.js'))
-    .pipe(gulp.dest('lib'));
-  gulp.src('./dev/modules/*.js')
-    .pipe(babel())
-    .pipe(gulp.dest('lib/modules'));
+
+//合并js
+gulp.task('concat', function() {
+  gulp.src(['./dev/modules/data-type.js', './dev/modules/data-set.js']) //要合并的文件
+    .pipe(concat('sobeautiful.js')) // 合并匹配到的js文件并命名为 "all.js"
+    .pipe(gulp.dest('dist'));
 });
+// Compile ES5 CommonJS entry point
+// gulp.task('commonjs', function() {
+//   // gulp.src('./dev/sweetalert.es6.js')
+//   //   .pipe(babel())
+//   //   .pipe(rename('sweetalert.js'))
+//   //   .pipe(gulp.dest('lib'));
+//
+//
+//   gulp.src('./dev/modules/*.js')
+//     .pipe(babel())
+//     .pipe(gulp.dest('lib/modules'));
+// });
 
 // Concatenate & Minify JS
-gulp.task('scripts', function() {
-  return browserify({
-      entries: './dev/sweetalert.es6.js',
-      debug: true
-    })
-    .transform(babelify)
-    .bundle()
-    .pipe(source('sweetalert-dev.js'))
-    .pipe(wrap({
-      src: './dev/gulpfile-wrap-template.js'
-    }))
-    .pipe(gulp.dest('dist')) // Developer version
-
-  .pipe(rename('sweetalert.min.js'))
-    .pipe(buffer())
-    .pipe(uglify())
-    .pipe(gulp.dest('dist')); // User version
-});
+// gulp.task('scripts', function() {
+//   return browserify({
+//       entries: './dev/modules/data-set.js',
+//       debug: true
+//     })
+//     .transform(babelify)
+//     .bundle()
+//     .pipe(source('data-set.js'))
+//     .pipe(gulp.dest('dist')) // Developer version
+//
+//   // .pipe(rename('sweetalert.min.js'))
+//   //   .pipe(buffer())
+//   //   .pipe(uglify())
+//   //   .pipe(gulp.dest('dist')); // User version
+// });
 
 // gulp.task('test', function() {
 //   return gulp.src('./test/index.html')
@@ -99,10 +105,10 @@ gulp.task('scripts', function() {
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-  gulp.watch(['dev/*.js', 'dev/*/*.js'], ['scripts']);
+  gulp.watch(['dev/*.js', 'dev/*/*.js'], ['concat']);
   //gulp.watch(['dev/*.scss', 'dev/*.css'], ['sass']);
   //gulp.watch('themes/*/*.scss', ['themes']);
 });
 
 // Default Task
-gulp.task('default', ['scripts', 'commonjs', 'watch']);
+gulp.task('default', [ 'concat', 'watch']);

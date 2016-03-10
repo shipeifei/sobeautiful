@@ -3,33 +3,31 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>dataType单元测试</title>
   <link rel="stylesheet" href="qunitjs/qunit/qunit.css">
   <script type="text/javascript" src="qunitjs/qunit/qunit.js">
   </script>
-  <script type="text/javascript" src="../dist/data-type.js">
+  <script type="text/javascript" src="../dist/sobeautiful.js">
   </script>
 </head>
 
 <body>
   <script type="text/javascript">
-    module('util测试');
-    test('util测试', function() {
+    test('dataType测试', function() {
       ok(true, dataType.isObject({}), 'is object');
       ok(true, dataType.isFunction(function() {}), 'is function');
       var div = document.createElement('div');
       ok(true, dataType.isDocument(div), 'is isDocument');
       ok(true, dataType.isWindow(window), 'is isWindow');
-
-
       equal(dataType.isWindow(window), true, "is isWindow");
       equal(dataType.isString(""),true," this is  a isString");
       equal(dataType.isNumber(1),true," this is  a isNumber");
       equal(dataType.isBoolean(true),true," this is  a isBoolean");
       equal(dataType.isEmpty({}),true," this is  a isEmpty");
       equal(dataType.isEmptyObject({}),true," this is  a isEmptyObject");
-
       equal(dataType.isArray([]),true," this is  a isArray");
+      equal(dataType.hasSelfProperty({a:'a',b:'2'}),true," this is  a hasSelfProperty");
+
 
 
     });

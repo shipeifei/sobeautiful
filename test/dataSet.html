@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>dataType单元测试</title>
+  <link rel="stylesheet" href="qunitjs/qunit/qunit.css">
+  <script type="text/javascript" src="qunitjs/qunit/qunit.js">
+  </script>
+  <script type="text/javascript" src="../dist/sobeautiful.js">
+  </script>
+</head>
+
+<body>
+  <script type="text/javascript">
+  asyncTest('asynchronous test', function() {
+    // Pause the test
+
+    dataSet.each(["a","b","c"],function (item,index) {
+      ok(true,index,item);
+    });
+   var map=  dataSet.map(["a","b","c"],function (item,index) {
+     equal(item+item, item+item, item+item);
+
+     return item+item;
+    });
+    console.log(map);
+    start();
+
+
+  });
+    test('dataSet测试', function() {
+      //expect(4);
+      equal(dataSet.contain([1, 2, 3, 4], 2), true, " this is  a contain");
+      //深度相等
+      deepEqual(dataSet.keys({
+        a: 'a',
+        b: 'b'
+      }), ["a", "b"], " this is  a keys");
+      deepEqual(dataSet.extend({
+        a: "1"
+      }, {
+        a: '2',
+        c: '2'
+      }), {
+        a: '2',
+        c: '2'
+      }, dataSet.extend({
+        a: "1"
+      }, {
+        a: '2',
+        c: '2'
+      }).toString);
+      equal(dataSet.isEqual('a', 'a'), true, "not ");
+
+
+
+    });
+
+    test("Test Method2", function() {
+      ok(true, "Module1 Test2");
+    });
+  </script>
+  <h1 id="qunit-header">sobeautiful test</h1>
+  <h2 id="qunit-banner"></h2>
+  <ol id="qunit-tests"></ol>
+</body>
+
+</html>
