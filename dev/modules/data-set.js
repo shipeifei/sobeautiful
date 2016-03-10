@@ -134,7 +134,6 @@ var dataSet = {
   isEqual: function(a, b) {
     return this.eq(a, b);
   },
-
   //循环
   /*
    *callback:function(value,index,elements) 第一个是数组值，第二个是数组索引，第三个是数组本身this
@@ -163,9 +162,6 @@ var dataSet = {
         }
       }
     }
-
-
-
     return elements;
   },
   //映射集合
@@ -225,9 +221,24 @@ var dataSet = {
       }
       return passed;
 
+    } else {
+      return Array.prototype.some.call(elements, callback);
     }
-    else {
-      return Array.prototype.some.call(elements,callback);
+  },
+  every: function(elements, callback) {
+    if (typeof Array.prototype.every != "function") {
+      var passed = true;
+      if (typeof callback === "function") {
+        for (var k = 0, length = elements.length; k < length; k++) {
+          if (passed === false) break;
+          passed = !!callback.call(elements[k], k, elements[k]);
+        }
+      }
+      return passed;
+    } else {
+      return Array.prototype.every.call(elements, callback);
     }
+
+
   }
 };

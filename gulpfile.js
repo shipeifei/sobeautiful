@@ -64,7 +64,15 @@ var babel = require('gulp-babel');
 gulp.task('concat', function() {
   gulp.src(['./dev/modules/data-type.js', './dev/modules/data-set.js']) //要合并的文件
     .pipe(concat('sobeautiful.js')) // 合并匹配到的js文件并命名为 "all.js"
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist')); // User version
+});
+
+//JS 合并压缩
+gulp.task('minifyjs', function() {
+  return gulp.src('./dist/sobeautiful.js')
+    .pipe(rename('sobeautiful.min.js')) //rename压缩后的文件名
+    .pipe(uglify()) //压缩
+    .pipe(gulp.dest('dist')); //输出
 });
 // Compile ES5 CommonJS entry point
 // gulp.task('commonjs', function() {
@@ -106,9 +114,9 @@ gulp.task('concat', function() {
 // Watch Files For Changes
 gulp.task('watch', function() {
   gulp.watch(['dev/*.js', 'dev/*/*.js'], ['concat']);
-  //gulp.watch(['dev/*.scss', 'dev/*.css'], ['sass']);
+  gulp.watch([ 'dist/sobeautiful.js'], ['minifyjs']);
   //gulp.watch('themes/*/*.scss', ['themes']);
 });
 
 // Default Task
-gulp.task('default', [ 'concat', 'watch']);
+gulp.task('default', ['concat', 'minifyjs','watch']);
