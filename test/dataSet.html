@@ -13,22 +13,27 @@
 
 <body>
   <script type="text/javascript">
-  asyncTest('asynchronous test', function() {
-    // Pause the test
+    asyncTest('asynchronous test', function() {
+      // Pause the test
+      dataSet.each(["a", "b", "c"], function(item, index) {
+        ok(true, index, item);
+      });
+      var map = dataSet.map(["a", "b", "c"], function(item, index) {
+        equal(item + item, item + item, item + item);
+        return item + item;
+      });
+      var filters=dataSet.filter([0,1, 2, 3], function(item, index) {
 
-    dataSet.each(["a","b","c"],function (item,index) {
-      ok(true,index,item);
+        equal(item , item, item );
+        return item>1;
+
+      });
+      console.log("filters", filters);
+
+      start();
     });
-   var map=  dataSet.map(["a","b","c"],function (item,index) {
-     equal(item+item, item+item, item+item);
-
-     return item+item;
-    });
-    console.log(map);
-    start();
 
 
-  });
     test('dataSet测试', function() {
       //expect(4);
       equal(dataSet.contain([1, 2, 3, 4], 2), true, " this is  a contain");

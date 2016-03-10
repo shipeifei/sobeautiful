@@ -137,9 +137,11 @@ var dataSet = {
   },
 
   //循环
+  /*
+  *callback:function(value,index,elements) 第一个是数组值，第二个是数组索引，第三个是数组本身this
+  *
+  */
   each: function(elements, callback) {
-
-
     var i, key;
     if (dataType.likeArray(elements)) {
       //使用es5原生的方法
@@ -172,16 +174,20 @@ var dataSet = {
     var value, values = [],
       i, key
     if (dataType.likeArray(elements)) {
-      for (i = 0; i < elements.length; i++) {
-        value = callback(elements[i], i);
-        console.log("value", value);
-        if (!dataType.isNull(value)) {
-          values.push(value);
+      //首先考虑es5的特性
+      if (typeof Array.prototype.map === 'function') {
+        return elements.map(callback);
+      } else {
+        for (i = 0; i < elements.length; i++) {
+          value = callback(elements[i], i,elements[i]);
+          if (!dataType.isNull(value)) {
+            values.push(value);
+          }
         }
       }
     } else {
       for (key in elements) {
-        value = callback(elements[key], key);
+        value = callback(elements[key], key,elements[key]);
         if (!dataType.isNull(value)) {
           values.push(value);
         }
@@ -190,5 +196,26 @@ var dataSet = {
     return (function() {
       return values.length > 0 ? Array.prototype.concat.apply([], values) : values;
     }())
+  },
+  /*
+  *过滤方法
+  *callback:function(value,index,elements) 第一个是数组值，第二个是数组索引，第三个是数组本身this
+  *
+  */
+  filter: function(elements, callback) {
+    if (typeof Array.prototype.filter !== "function") {
+      var arr = [];
+      if (typeof callback === "function") {
+        for (var k = 0, length = elements.length; k < length; k++) {
+          callback.call(elements[k], k,elements[k]) && arr.push(elements[k]);
+        }
+      }
+      return arr;
+
+    }
+    else {
+    return  elements.filter(callback);
+    }
+
   }
 };
