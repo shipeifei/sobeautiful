@@ -62,7 +62,7 @@ var babel = require('gulp-babel');
 
 //合并js
 gulp.task('concat', function() {
-  gulp.src(['./dev/modules/data-type.js', './dev/modules/data-set.js']) //要合并的文件
+  gulp.src(['./dev/modules/header.js','./dev/modules/data-type.js', './dev/modules/data-set.js']) //要合并的文件
     .pipe(concat('sobeautiful.js')) // 合并匹配到的js文件并命名为 "all.js"
     .pipe(gulp.dest('dist')); // User version
 });

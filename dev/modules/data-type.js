@@ -5,14 +5,15 @@
  *email:shipeifei_gonghe@163.com
  ***/
 var dataType = {
-  push: Array.prototype.push,
-  slice: Array.prototype.slice,
-  toString: Object.prototype.toString,
-  hasOwnProperty: Object.prototype.hasOwnProperty,
-  nativeIsArray: Array.isArray,
-  nativeKeys: Object.keys,
-  nativeBind: Function.prototype.bind,
-  nativeCreate: Object.create,
+  arrProto: ArrayProto,
+  push:  push,
+  slice:  slice,
+  toString: toString,
+  hasOwnProperty: hasOwnProperty,
+  nativeIsArray: nativeIsArray,
+  nativeKeys: nativeKeys,
+  nativeBind: nativeBind,
+  nativeCreate: nativeCreate,
   class2type: (function() {
     var classType = {}, types = "Boolean Number String Function Array Date RegExp Object Error".split(" ");
     for (var i = 0, len = types.length; i < len; i++) {

@@ -1,3 +1,19 @@
+var ArrayProto = Array.prototype,
+  ObjProto = Object.prototype,
+  FuncProto = Function.prototype;
+
+var
+  push = ArrayProto.push,
+  slice = ArrayProto.slice,
+  toString = ObjProto.toString,
+  hasOwnProperty = ObjProto.hasOwnProperty;
+
+var
+  nativeIsArray = Array.isArray,
+  nativeKeys = Object.keys,
+  nativeBind = FuncProto.bind,
+  nativeCreate = Object.create;
+
 /*
  *工具类主要进行数据类型、数据、对象等相关涉及到数据的方法实现
  *author:shipeifei
@@ -5,14 +21,15 @@
  *email:shipeifei_gonghe@163.com
  ***/
 var dataType = {
-  push: Array.prototype.push,
-  slice: Array.prototype.slice,
-  toString: Object.prototype.toString,
-  hasOwnProperty: Object.prototype.hasOwnProperty,
-  nativeIsArray: Array.isArray,
-  nativeKeys: Object.keys,
-  nativeBind: Function.prototype.bind,
-  nativeCreate: Object.create,
+  arrProto: ArrayProto,
+  push:  push,
+  slice:  slice,
+  toString: toString,
+  hasOwnProperty: hasOwnProperty,
+  nativeIsArray: nativeIsArray,
+  nativeKeys: nativeKeys,
+  nativeBind: nativeBind,
+  nativeCreate: nativeCreate,
   class2type: (function() {
     var classType = {}, types = "Boolean Number String Function Array Date RegExp Object Error".split(" ");
     for (var i = 0, len = types.length; i < len; i++) {
@@ -111,7 +128,7 @@ var dataSet = {
   contain: function(obj, key) {
     //数组
     if (dataType.likeArray(obj)) {
-      if (Array.prototype.indexOf) {
+      if (dataType.arrProto.indexOf) {
         return obj.indexOf(key);
       } else {
         var length = obj.length;
@@ -245,7 +262,7 @@ var dataSet = {
     var i, key;
     if (dataType.likeArray(elements)) {
       //使用es5原生的方法
-      if (Array.prototype.forEach) {
+      if (dataType.arrProto.forEach) {
         elements.forEach(function(value, index, array) {
           if (callback.call(value, index, value) === false) {
             return elements;
@@ -272,7 +289,7 @@ var dataSet = {
       i, key
     if (dataType.likeArray(elements)) {
       //首先考虑es5的特性
-      if (typeof Array.prototype.map === 'function') {
+      if (typeof dataType.arrProto.map === 'function') {
         return elements.map(callback);
       } else {
         for (i = 0; i < elements.length; i++) {
@@ -291,7 +308,7 @@ var dataSet = {
       }
     }
     return (function() {
-      return values.length > 0 ? Array.prototype.concat.apply([], values) : values;
+      return values.length > 0 ? dataType.arrProto.concat.apply([], values) : values;
     }())
   },
   /*
@@ -300,7 +317,7 @@ var dataSet = {
    *
    */
   filter: function(elements, callback) {
-    if (typeof Array.prototype.filter !== "function") {
+    if (typeof dataType.arrProto.filter !== "function") {
       var arr = [];
       if (typeof callback === "function") {
         for (var k = 0, length = elements.length; k < length; k++) {
@@ -313,7 +330,7 @@ var dataSet = {
     }
   },
   some: function(elements, callback) {
-    if (typeof Array.prototype.some !== "function") {
+    if (typeof dataType.arrProto.some !== "function") {
       var passed = false;
       if (typeof callback === "function") {
         for (var k = 0, length = elements.length; k < length; k++) {
@@ -322,13 +339,12 @@ var dataSet = {
         }
       }
       return passed;
-
     } else {
-      return Array.prototype.some.call(elements, callback);
+      return dataType.arrProto.some.call(elements, callback);
     }
   },
   every: function(elements, callback) {
-    if (typeof Array.prototype.every != "function") {
+    if (typeof dataType.arrProto.every != "function") {
       var passed = true;
       if (typeof callback === "function") {
         for (var k = 0, length = elements.length; k < length; k++) {
@@ -338,9 +354,29 @@ var dataSet = {
       }
       return passed;
     } else {
-      return Array.prototype.every.call(elements, callback);
+      return dataType.arrProto.every.call(elements, callback);
     }
-
-
+  },
+  //返回一个除去所有false值的 array副本。 在javascript中, false, null, 0, "", undefined 和 NaN 都是false值.
+  compact: function(array) {
+    return this.filter(array, function(item) {
+      return item != null;
+    });
+  },
+  indexOf: function(elements, searchElement, fromIndex) {
+    var protoIndexOf = dataType.arrProto.indexOf;
+    if (typeof protoIndexOf === "function") {
+      return protoIndexOf.call(elements, searchElement, fromIndex);
+    } else {
+      var index = -1;
+      fromIndex = fromIndex * 1 || 0;
+      for (var k = 0, length = elements.length; k < length; k++) {
+        if (k >= fromIndex && elements[k] === searchElement) {
+          index = k;
+          break;
+        }
+      }
+      return index;
+    }
   }
 };

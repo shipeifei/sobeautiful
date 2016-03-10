@@ -37,11 +37,19 @@
          return item>3;
       });
       console.log("some", some);
-      //some
+      //every
       var every=dataSet.every([0,3,4,5,89,23],function (item,index) {
          return item>3;
       });
       console.log("every", every);
+
+
+      //compact
+      var compact=dataSet.compact([1,'',null,2]);
+      console.log("compact", compact);
+
+      var indexOf=dataSet.indexOf(['a','b','c'],'b');
+      console.log("indexOf", indexOf);
       start();
     });
 
