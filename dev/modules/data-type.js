@@ -5,15 +5,6 @@
  *email:shipeifei_gonghe@163.com
  ***/
 var dataType = {
-  arrProto: ArrayProto,
-  push:  push,
-  slice:  slice,
-  toString: toString,
-  hasOwnProperty: hasOwnProperty,
-  nativeIsArray: nativeIsArray,
-  nativeKeys: nativeKeys,
-  nativeBind: nativeBind,
-  nativeCreate: nativeCreate,
   class2type: (function() {
     var classType = {}, types = "Boolean Number String Function Array Date RegExp Object Error".split(" ");
     for (var i = 0, len = types.length; i < len; i++) {
@@ -21,7 +12,6 @@ var dataType = {
     }
     return classType;
   }()),
-  toString: {}.toString,
   //判断是否定义
   isUndefined: function(obj) {
     return typeof obj === "undefined";
@@ -65,7 +55,7 @@ var dataType = {
   },
   //判断对象是否包含给定的自身属性
   hasSelfProperty: function(obj, key) {
-    return obj != null && this.hasOwnProperty.call(obj, key);
+    return obj != null && hasOwnProperty.call(obj, key);
   },
   isArray: Array.isArray || function(obj) {
     return this.type(obj) === 'array';

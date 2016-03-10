@@ -14,8 +14,13 @@
 <body>
   <script type="text/javascript">
     asyncTest('asynchronous test', function() {
+
+       [111,21,31].forEach(function (item,index,array) {
+           console.log(item);
+       });
+
       // Pause the test
-      dataSet.each(["a", "b", "c"], function(item, index) {
+      dataSet.each( {a:'11111111',b:'2222222'}, function(item, index) {
         ok(true, index, item);
       });
       var map = dataSet.map(["a", "b", "c"], function(item, index) {

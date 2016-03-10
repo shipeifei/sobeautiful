@@ -9,7 +9,7 @@ var dataSet = {
   contain: function(obj, key) {
     //数组
     if (dataType.likeArray(obj)) {
-      if (dataType.arrProto.indexOf) {
+      if (ArrayProto.indexOf) {
         return obj.indexOf(key);
       } else {
         var length = obj.length;
@@ -49,7 +49,7 @@ var dataSet = {
   //获取对象的所有的自身的属性，排除原型继承的属性
   keys: function(obj) {
     if (!dataType.isObject(obj)) return [];
-    if (dataType.nativeKeys) return dataType.nativeKeys(obj);
+    if (nativeKeys) return nativeKeys(obj);
     var keys = [];
     for (var key in obj)
       if (dataType.hasSelfProperty(obj, key)) keys.push(key);
@@ -71,8 +71,8 @@ var dataSet = {
   eq: function(a, b, aStack, bStack) {
     if (a === b) return a !== 0 || 1 / a === 1 / b;
     if (a == null || b == null) return a === b;
-    var className = dataType.toString.call(a);
-    if (className !== dataType.toString.call(b)) return false;
+    var className = toString.call(a);
+    if (className !== toString.call(b)) return false;
     switch (className) {
       case '[object RegExp]':
       case '[object String]':
@@ -142,19 +142,7 @@ var dataSet = {
   each: function(elements, callback) {
     var i, key;
     if (dataType.likeArray(elements)) {
-      //使用es5原生的方法
-      if (dataType.arrProto.forEach) {
-        elements.forEach(function(value, index, array) {
-          if (callback.call(value, index, value) === false) {
-            return elements;
-          }
-        });
-      } else {
-        for (i = 0; i < elements.length; i++)
-          if (callback.call(elements[i], i, elements[i]) === false) {
-            return elements;
-          }
-      }
+      return elements.forEach(callback);
     } else {
       for (key in elements) {
         if (callback.call(elements[key], key, elements[key]) === false) {
@@ -170,7 +158,7 @@ var dataSet = {
       i, key
     if (dataType.likeArray(elements)) {
       //首先考虑es5的特性
-      if (typeof dataType.arrProto.map === 'function') {
+      if (typeof ArrayProto.map === 'function') {
         return elements.map(callback);
       } else {
         for (i = 0; i < elements.length; i++) {
@@ -189,7 +177,7 @@ var dataSet = {
       }
     }
     return (function() {
-      return values.length > 0 ? dataType.arrProto.concat.apply([], values) : values;
+      return values.length > 0 ? ArrayProto.concat.apply([], values) : values;
     }())
   },
   /*
@@ -198,7 +186,7 @@ var dataSet = {
    *
    */
   filter: function(elements, callback) {
-    if (typeof dataType.arrProto.filter !== "function") {
+    if (typeof ArrayProto.filter !== "function") {
       var arr = [];
       if (typeof callback === "function") {
         for (var k = 0, length = elements.length; k < length; k++) {
@@ -211,7 +199,7 @@ var dataSet = {
     }
   },
   some: function(elements, callback) {
-    if (typeof dataType.arrProto.some !== "function") {
+    if (typeof ArrayProto.some !== "function") {
       var passed = false;
       if (typeof callback === "function") {
         for (var k = 0, length = elements.length; k < length; k++) {
@@ -221,11 +209,11 @@ var dataSet = {
       }
       return passed;
     } else {
-      return dataType.arrProto.some.call(elements, callback);
+      return ArrayProto.some.call(elements, callback);
     }
   },
   every: function(elements, callback) {
-    if (typeof dataType.arrProto.every != "function") {
+    if (typeof ArrayProto.every != "function") {
       var passed = true;
       if (typeof callback === "function") {
         for (var k = 0, length = elements.length; k < length; k++) {
@@ -235,7 +223,7 @@ var dataSet = {
       }
       return passed;
     } else {
-      return dataType.arrProto.every.call(elements, callback);
+      return ArrayProto.every.call(elements, callback);
     }
   },
   //返回一个除去所有false值的 array副本。 在javascript中, false, null, 0, "", undefined 和 NaN 都是false值.
@@ -245,7 +233,7 @@ var dataSet = {
     });
   },
   indexOf: function(elements, searchElement, fromIndex) {
-    var protoIndexOf = dataType.arrProto.indexOf;
+    var protoIndexOf = ArrayProto.indexOf;
     if (typeof protoIndexOf === "function") {
       return protoIndexOf.call(elements, searchElement, fromIndex);
     } else {
