@@ -16,10 +16,15 @@ var dataType = {
   isUndefined: function(obj) {
     return typeof obj === "undefined";
   },
-
+  //使用偏函数
+  isType : function(type) {
+      return function(obj) {
+          return toString.call(obj) === "[object " + type + "]";
+      }
+  },
   type: function(obj) {
     return obj == null ? String(obj) :
-      this.class2type[this.toString.call(obj)] || "object"
+      this.class2type[toString.call(obj)] || "object"
   },
   //判断是否为字符串
   isString: function(obj) {

@@ -33,7 +33,7 @@ var dataSet = {
   collectNonEnumProps: function(obj, keys) {
     var nonEnumIdx = this.nonEnumerableProps.length;
     var constructor = obj.constructor;
-    var proto = (dataType.isFunction(constructor) && constructor.prototype) || Object.prototype;
+    var proto = (dataType.isFunction(constructor) && constructor.prototype) || ObjProto;
 
     // 构造函数作为一个特殊的情况.
     var prop = 'constructor';
@@ -142,7 +142,7 @@ var dataSet = {
   each: function(elements, callback) {
     var i, key;
     if (dataType.likeArray(elements)) {
-      return elements.forEach(callback);
+      return ArrayProto.forEach.call(elements,callback);
     } else {
       for (key in elements) {
         if (callback.call(elements[key], key, elements[key]) === false) {
@@ -159,7 +159,7 @@ var dataSet = {
     if (dataType.likeArray(elements)) {
       //首先考虑es5的特性
       if (typeof ArrayProto.map === 'function') {
-        return elements.map(callback);
+        return ArrayProto.map.call(elements,callback);
       } else {
         for (i = 0; i < elements.length; i++) {
           value = callback(elements[i], i, elements[i]);
@@ -186,45 +186,13 @@ var dataSet = {
    *
    */
   filter: function(elements, callback) {
-    if (typeof ArrayProto.filter !== "function") {
-      var arr = [];
-      if (typeof callback === "function") {
-        for (var k = 0, length = elements.length; k < length; k++) {
-          callback.call(elements[k], k, elements[k]) && arr.push(elements[k]);
-        }
-      }
-      return arr;
-    } else {
-      return elements.filter(callback);
-    }
+      return ArrayProto.filter.call(elements,callback);
   },
   some: function(elements, callback) {
-    if (typeof ArrayProto.some !== "function") {
-      var passed = false;
-      if (typeof callback === "function") {
-        for (var k = 0, length = elements.length; k < length; k++) {
-          if (passed === true) break;
-          passed = !!callback.call(elements[k], k, elements[k]);
-        }
-      }
-      return passed;
-    } else {
       return ArrayProto.some.call(elements, callback);
-    }
   },
   every: function(elements, callback) {
-    if (typeof ArrayProto.every != "function") {
-      var passed = true;
-      if (typeof callback === "function") {
-        for (var k = 0, length = elements.length; k < length; k++) {
-          if (passed === false) break;
-          passed = !!callback.call(elements[k], k, elements[k]);
-        }
-      }
-      return passed;
-    } else {
       return ArrayProto.every.call(elements, callback);
-    }
   },
   //返回一个除去所有false值的 array副本。 在javascript中, false, null, 0, "", undefined 和 NaN 都是false值.
   compact: function(array) {
@@ -233,19 +201,9 @@ var dataSet = {
     });
   },
   indexOf: function(elements, searchElement, fromIndex) {
-    var protoIndexOf = ArrayProto.indexOf;
-    if (typeof protoIndexOf === "function") {
-      return protoIndexOf.call(elements, searchElement, fromIndex);
-    } else {
-      var index = -1;
-      fromIndex = fromIndex * 1 || 0;
-      for (var k = 0, length = elements.length; k < length; k++) {
-        if (k >= fromIndex && elements[k] === searchElement) {
-          index = k;
-          break;
-        }
-      }
-      return index;
-    }
+      return ArrayProto.indexOf.call(elements, searchElement, fromIndex);
+  },
+  lastIndexOf:function (elements, searchElement, fromIndex) {
+    return ArrayProto.lastIndexOf.call(elements, searchElement, fromIndex);
   }
 };

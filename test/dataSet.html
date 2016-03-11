@@ -15,46 +15,63 @@
   <script type="text/javascript">
     asyncTest('asynchronous test', function() {
 
-       [111,21,31].forEach(function (item,index,array) {
-           console.log(item);
-       });
+
+      var elements=document.getElementsByTagName('div');
+      dataSet.each(elements,function (item) {
+        console.log("item.innerHTML", item.innerHTML);
+      });
+      [111, 21, 31].forEach(function(item, index, array) {
+        console.log(item);
+      });
 
       // Pause the test
-      dataSet.each( {a:'11111111',b:'2222222'}, function(item, index) {
-        ok(true, index, item);
+      dataSet.each({
+        a: '11111111',
+        b: '2222222'
+      }, function(item, index) {
+        equal(item, item, 'forEach循环对象');
       });
       var map = dataSet.map(["a", "b", "c"], function(item, index) {
         equal(item + item, item + item, item + item);
         return item + item;
       });
-      var filters=dataSet.filter([0,1, 2, 3], function(item, index) {
+      var filters = dataSet.filter([0, 1, 2, 3], function(item, index) {
 
-        equal(item , item, item );
-        return item>1;
+        equal(item, item, item);
+        return item > 1;
 
       });
       console.log("filters", filters);
 
 
       //some
-      var some=dataSet.some([0,3,4,5,89,23],function (item,index) {
+      var some = dataSet.some([0, 3, 4, 5, 89, 23], function(item, index) {
 
-         return item>3;
+        return item > 3;
       });
       console.log("some", some);
       //every
-      var every=dataSet.every([0,3,4,5,89,23],function (item,index) {
-         return item>3;
+      var every = dataSet.every([0, 3, 4, 5, 89, 23], function(item, index) {
+        return item > 3;
       });
       console.log("every", every);
 
 
       //compact
-      var compact=dataSet.compact([1,'',null,2]);
+      var compact = dataSet.compact([1, '', null, 2]);
       console.log("compact", compact);
 
-      var indexOf=dataSet.indexOf(['a','b','c'],'b');
+      var indexOf = dataSet.indexOf(['a', 'b', 'c'], 'b');
       console.log("indexOf", indexOf);
+
+
+
+
+      var sum = [1, 2, 3, 4].reduce(function(previous, current, index, array) {
+        return previous + current;
+      });
+
+      console.log(sum); // 10
       start();
     });
 
@@ -90,6 +107,21 @@
   <h1 id="qunit-header">sobeautiful test</h1>
   <h2 id="qunit-banner"></h2>
   <ol id="qunit-tests"></ol>
+  <div class="">
+    1
+  </div>
+  <div class="">
+    2
+  </div>
+  <div class="">
+    3
+  </div>
+  <div class="">
+    4
+  </div>
+  <div class="">
+    5
+  </div>
 </body>
 
 </html>
