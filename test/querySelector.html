@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="qunitjs/qunit/qunit.css">
+  <script type="text/javascript" src="../zepto/zepto.js">
+  </script>
+  <script type="text/javascript" src="qunitjs/qunit/qunit.js">
+  </script>
+  <script type="text/javascript" src="../dist/sobeautiful.js">
+  </script>
+  <style media="screen">
+    .color{
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="a b c d ef " style='background-color:blue;width:100px;padding:10px;border:solid 1px red;' id="dom" name="dd">
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <a class="aa" href="#">11</a>
+    <a class="aabbbb" href="#">22</a>
+    <a class="aa" href="#">33</a>
+    <a href="#">133</a>
+    <a href="#">2333</a>
+    <a href="#">33333</a>
+    <a href="#">1333333</a>
+    <a href="#">23333333</a>
+    <a href="#">333333333</a>
+    <a href="#">1333333333</a>
+    <a href="#">233333333333</a>
+    <a href="#" class="last">3333333333333</a>
+    <p>
+      aa
+    </p>
+  </div>
+
+  <div class="bbb" onclick="show()">
+    dddddddddd
+  </div>
+  <input type="button" name="name" value="sssssss1" data-from="hello">
+  <script type="text/javascript">
+  console.log("window.innerHeight", window.innerHeight);
+  console.log("window.scrollHeight", document.getElementById('dom').scrollHeight);
+
+
+  console.log("$(window).width()", $(window).width() );
+  //$(window).width()   // => 768 (viewport width)
+    // sb(function($) {
+    //   alert('Ready to Zepto!')
+    // })
+    var dom = sb('.ef');
+    console.log("height",dom.height() );
+    console.log("data", sb('input').data('from'));
+    console.log("dom.attr()", dom.attr('name','ddd'));
+    console.log("dom.hasClass()", dom.hasClass('ddddd'));
+    console.log("dom.offset().left", dom.offset().width);
+
+    test('方法测试', function() {
+      deepEqual(dom.slice(1), dom.slice(1), "测试slice方法通过");
+      deepEqual(dom.get(1), dom.get(1), "");
+      //deepEqual(dom.filter(".aa"),[],'元素过滤');
+      deepEqual(dom.is(".bb"), true, 'is方法测试');
+      deepEqual(dom.eq(1), true, 'eq方法测试');
+      deepEqual(dom.first(), true, 'first方法测试');
+      console.log("dom.parents('.parent')", sb('.last').siblings());
+       equal(dom.hasClass('ef'),true,'hasClass');
+
+    });
+    function show() {
+      dom.css({ backgroundColor: '#8EE', fontSize: 28 });
+        dom.css("backgroundColor",'');
+      //dom.css('background-color', '')
+    //  sb("a").addClass('color');
+      // sb("a").toggleClass('color');
+      // sb("a").hide();
+    }
+  </script>
+  <h1 id="qunit-header">sobeautiful test</h1>
+  <h2 id="qunit-banner"></h2>
+  <ol id="qunit-tests"></ol>
+</body>
+
+</html>

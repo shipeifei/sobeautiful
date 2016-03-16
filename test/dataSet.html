@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <title>dataType单元测试</title>
@@ -72,6 +71,8 @@
       });
 
       console.log(sum); // 10
+      deepEqual([1,1,1,2,3,3,4].uniq(function () {
+      }),[1,2,3,4],"uniq");
       start();
     });
 
@@ -84,20 +85,7 @@
         a: 'a',
         b: 'b'
       }), ["a", "b"], " this is  a keys");
-      deepEqual(dataSet.extend({
-        a: "1"
-      }, {
-        a: '2',
-        c: '2'
-      }), {
-        a: '2',
-        c: '2'
-      }, dataSet.extend({
-        a: "1"
-      }, {
-        a: '2',
-        c: '2'
-      }).toString);
+      deepEqual(dataSet.extend({a:'1'},{a:'2',b:'3'}),{a:'2',b:'3'},"dataSet.extend");
       equal(dataSet.isEqual('a', 'a'), true, "not ");
     });
     test("Test Method2", function() {

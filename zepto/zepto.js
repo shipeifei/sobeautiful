@@ -24,7 +24,7 @@ var Zepto = (function() {
 
     // special attributes that should be get/set via method calls
     methodAttributes = ['val', 'css', 'html', 'text', 'data', 'width', 'height', 'offset'],
-
+    //相邻; 接近性; 傍边
     adjacencyOperators = ['after', 'prepend', 'before', 'append'],
     table = document.createElement('table'),
     tableRow = document.createElement('tr'),
@@ -164,7 +164,7 @@ var Zepto = (function() {
       display == "none" && (display = "block")
       elementDisplay[nodeName] = display
     }
-    return elementDisplay[nodeName]
+    return elementDisplay[nodeName];
   }
     //获取指定元素的子节点(不包含文本节点),Firefox不支持children，所以只能通过筛选childNodes
   function children(element) {
@@ -791,10 +791,12 @@ var Zepto = (function() {
       if (type(property) == 'string') {
         if (!value && value !== 0)
           this.each(function() {
-            this.style.removeProperty(dasherize(property))
+            this.style.removeProperty(dasherize(property));
           })
         else
+        {
           css = dasherize(property) + ":" + maybeAddPx(property, value)
+        }
       } else {
         for (key in property)
           if (!property[key] && property[key] !== 0)
